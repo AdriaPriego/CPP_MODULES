@@ -15,7 +15,7 @@
 
 # include <iostream>
 
-class Forms;
+class AForm;
 
 class Bureaucrat
 {
@@ -30,9 +30,10 @@ class Bureaucrat
 		~Bureaucrat( void );
 		std::string getName( void ) const;
 		int getGrade( void ) const;
-		void signForm( Forms & form );
+		void signForm( AForm & form );
 		void incrementGrade( void );
 		void decrementGrade( void );
+		void executeForm(AForm const & form) const;
 		class GradeTooHighException : public std::exception
 		{
 			public:

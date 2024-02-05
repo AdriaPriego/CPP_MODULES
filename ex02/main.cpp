@@ -11,33 +11,20 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Forms.hpp"
+#include "AForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "Colors.hpp"
 
 int	main(void)
 {
 	try
 	{
-		Bureaucrat	ferran("Ferran", 140);
-		Bureaucrat	boss("Boss", 1);
-		Forms		basicForm("Basic stuff", 140, 150);
-		Forms		basicForm2(basicForm);
-		Forms		advancedForm("Advanced stuff", 10, 1);
-		
-		std::cout << ferran << std::endl;
-		std::cout << boss << std::endl;
-		std::cout << basicForm << std::endl;
-		std::cout << basicForm2 << std::endl;
-		std::cout << advancedForm << std::endl;
-		
-		ferran.signForm(basicForm);
-		boss.signForm(basicForm2);
-		ferran.signForm(advancedForm);
+		AForm *generic = new PresidentialPardonForm();
+		Bureaucrat test("PETER", 1);
 
-		boss.signForm(advancedForm);
-		std::cout << basicForm << std::endl;
-		std::cout << basicForm2 << std::endl;
-		std::cout << advancedForm << std::endl;
+		test.signForm(*generic);
+		test.executeForm(*generic);
+		delete generic;
 	}
 	catch (std::exception & e)
 	{

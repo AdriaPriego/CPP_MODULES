@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 NAME = Bureaucrat
-SRC = main.cpp Bureaucrat.cpp Forms.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp
 FLAGS = -std=c++98 -Wall -Wextra -Werror
 DEPFLAGS = -MMD -MP
 DIR_OBJ = tmp/

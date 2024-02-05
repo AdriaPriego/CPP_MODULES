@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Forms.hpp                                          :+:      :+:    :+:   */
+/*   Form.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apriego- <apriego-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORMS_HPP
-# define FORMS_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <iostream>
 
 class Bureaucrat;
 
-class Forms
+class AForm
 {
 	private:
 		const std::string _name;
@@ -25,16 +25,17 @@ class Forms
 		const int	_grade_sign;
 		const int	_grade_exe;
 	public:
-		Forms( void );
-		Forms( std::string name, int grade_sign, int grade_exe);
-		Forms( Forms &cpy );
-		Forms &operator=( Forms &cpy );
-		~Forms( void );
+		AForm( void );
+		AForm( std::string name, int grade_sign, int grade_exe);
+		AForm( AForm &cpy );
+		AForm &operator=( AForm &cpy );
+		virtual ~AForm( void ) = 0;
 		int	getGradeSign( void ) const;
 		int	getGradeExe( void ) const;
 		bool getSigned( void ) const;
 		std::string getName( void ) const;
 		void beSigned( const Bureaucrat &bure );
+		virtual void execute( Bureaucrat const & executor ) const = 0;
 		class GradeTooHighException : public std::exception
 		{
 			public:
@@ -45,8 +46,13 @@ class Forms
 			public:
 				const char * what() const throw();
 		};
+		class NotSigned : public std::exception
+		{
+			public:
+				const char * what() const throw();
+		};
 };
 
-std::ostream &		operator<<(std::ostream &out, const Forms &bur);
+std::ostream &		operator<<(std::ostream &out, const AForm &bur);
 
 #endif	
