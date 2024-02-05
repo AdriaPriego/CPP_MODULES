@@ -13,13 +13,15 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "Colors.hpp"
 
 int	main(void)
 {
 	try
 	{
-		AForm *generic = new PresidentialPardonForm();
+		AForm *generic = new ShrubberyCreationForm();
 		Bureaucrat test("PETER", 1);
 
 		test.signForm(*generic);
