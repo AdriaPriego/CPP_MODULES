@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Forms.hpp                                          :+:      :+:    :+:   */
+/*   Form.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apriego- <apriego-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORMS_HPP
-# define FORMS_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
 # include <iostream>
 
 class Bureaucrat;
 
-class Forms
+class Form
 {
 	private:
 		const std::string _name;
@@ -25,11 +25,11 @@ class Forms
 		const int	_grade_sign;
 		const int	_grade_exe;
 	public:
-		Forms( void );
-		Forms( std::string name, int grade_sign, int grade_exe);
-		Forms( Forms &cpy );
-		Forms &operator=( Forms &cpy );
-		~Forms( void );
+		Form( void );
+		Form( std::string name, int grade_sign, int grade_exe);
+		Form( Form &cpy );
+		Form &operator=( Form &cpy );
+		~Form( void );
 		int	getGradeSign( void ) const;
 		int	getGradeExe( void ) const;
 		bool getSigned( void ) const;
@@ -47,6 +47,6 @@ class Forms
 		};
 };
 
-std::ostream &		operator<<(std::ostream &out, const Forms &bur);
+std::ostream &		operator<<(std::ostream &out, const Form &bur);
 
 #endif	

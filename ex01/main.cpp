@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Forms.hpp"
+#include "Form.hpp"
 #include "Colors.hpp"
 
 int	main(void)
@@ -20,9 +20,9 @@ int	main(void)
 	{
 		Bureaucrat	ferran("Ferran", 140);
 		Bureaucrat	boss("Boss", 1);
-		Forms		basicForm("Basic stuff", 140, 150);
-		Forms		basicForm2(basicForm);
-		Forms		advancedForm("Advanced stuff", 10, 1);
+		Form		basicForm("Basic stuff", 140, 150);
+		Form		basicForm2(basicForm);
+		Form		advancedForm("Advanced stuff", 10, 1);
 		
 		std::cout << ferran << std::endl;
 		std::cout << boss << std::endl;

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Forms.hpp"
+#include "Form.hpp"
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat( void ): _name("Default")
@@ -69,7 +69,7 @@ void Bureaucrat::decrementGrade( void )
 	_grade++;
 }
 
-void Bureaucrat::signForm( Forms & form )
+void Bureaucrat::signForm( Form & form )
 {
 	try
 	{
