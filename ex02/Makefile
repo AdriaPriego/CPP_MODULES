@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Forms
+NAME = Bureaucrat
 SRC = main.cpp Bureaucrat.cpp Forms.cpp
 FLAGS = -std=c++98 -Wall -Wextra -Werror
 DEPFLAGS = -MMD -MP
