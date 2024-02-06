@@ -16,47 +16,46 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "Colors.hpp"
+#include "Intern.hpp"
 
 int	main(void)
 {
 	Bureaucrat	ferran("Ferran", 145);
 	Bureaucrat	boss("Boss", 1);
-	AForm		*shrubberyForm = new ShrubberyCreationForm("Joselito");
-	AForm		*robotomyForm = new RobotomyRequestForm("Pandu");
-	AForm		*pardonForm = new PresidentialPardonForm("Hannibal");
+	Intern		becari;
+	AForm		*form = NULL;
 
+	std::cout << std::endl << RED << "Bad Type" << END << std::endl;
 	try
 	{
-		std::cout << ferran << std::endl;
-		std::cout << boss << std::endl;
-		std::cout << *shrubberyForm << std::endl;
-		std::cout << *robotomyForm << std::endl;
-		std::cout << *pardonForm << std::endl;
-
-		ferran.signForm(*shrubberyForm);
-		ferran.executeForm(*shrubberyForm);
-
-		std::cout << *shrubberyForm << std::endl;
-
-		boss.executeForm(*shrubberyForm);
-
-		std::cout << *robotomyForm << std::endl;
-		ferran.signForm(*robotomyForm);
-		boss.signForm(*robotomyForm);
-		boss.executeForm(*robotomyForm);
-
-		ferran.signForm(*pardonForm);
-		ferran.executeForm(*pardonForm);
-		boss.executeForm(*pardonForm);
-		boss.signForm(*pardonForm);
-		boss.executeForm(*pardonForm);
+		form = becari.makeForm("pp", "Bender");
 	}
 	catch (std::exception & e)
 	{
 		std::cout << "Exception caught: " << e.what() << std::endl;
 	}
-	delete shrubberyForm;
-	delete robotomyForm;
-	delete pardonForm;
+	std::cout << std::endl << GREEN << "Correct Type" << END << std::endl;
+	try
+	{
+		form = becari.makeForm("robotomy", "Pami");
+
+		std::cout << ferran << std::endl;
+		std::cout << boss << std::endl;
+		std::cout << *form << std::endl;
+
+		ferran.signForm(*form);
+		ferran.executeForm(*form);
+
+		std::cout << *form << std::endl;
+
+		boss.signForm(*form);
+		boss.executeForm(*form);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
+	delete form;
 	return (0);
 }
