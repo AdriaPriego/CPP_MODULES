@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:57:30 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/07 17:39:25 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/07 22:34:13 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,91 +39,6 @@ ScalarConverter::~ScalarConverter()
     std::cout << "Default Destructor" << std::endl;    
 }
 
-int countOcurs(std::string literal, char toFind)
-{
-    int ocurs = 0;
-
-    for (int i = 0; literal[i]; i++)
-    {
-        if (literal[i] == toFind)
-            ocurs++;
-    }
-    return (ocurs);
-}
-
-int isInt(const std::string& literal)
-{
-    size_t i = 0;
-
-    if (literal[0] == '-')
-        i = 1;
-    while (i < literal.length())
-    {
-        if (isdigit(literal[i]) == 0)
-            return (-1);
-        i++;
-    }
-    return (IS_INT);
-}
-
-int isFloat(const std::string& literal) {
-    size_t i = 0;
-
-    if (literal[0] == '-')
-        i = 1;
-    while (i < literal.length() - 1)
-    {
-        if (isdigit(literal[i]) == 0 && literal[i] != '.')
-            return (-1);
-        i++;
-    }
-    return (IS_FLOAT);
-}
-
-int isDouble(const std::string& literal) {
-    size_t i = 0;
-
-    if (literal[0] == '-')
-        i = 1;
-    while (i < literal.length())
-    {
-        if (isdigit(literal[i]) == 0 && literal[i] != '.')
-            return (-1);
-        i++;
-    }
-    return (IS_DOUBLE);
-}
-
-int checkSpecialCase(const std::string &literal)
-{
-    if (literal == "+inf" || literal == "-inf" || literal == "nan")
-        return (1);
-    if (literal == "+inff" || literal == "-inff" || literal == "nanf")
-        return (1);
-    return (0);
-}
-
-int checkType(const std::string &literal)
-{
-    int ocurs = countOcurs(literal, '.');
-    if (literal.length() == 1)
-        return (IS_CHAR);
-    if (checkSpecialCase(literal))
-        return (IS_SPECIAL);
-    switch (ocurs)
-    {
-        case 0:
-            return (isInt(literal));
-        case 1:
-            if (literal[literal.length() - 1] == 'F' || literal[literal.length() - 1] == 'f')
-                return (isFloat(literal));
-            else
-                return (isDouble(literal));
-        default:
-            return (-1);
-    }
-}
-
 void transformChar(const char c)
 {
     if (c < 33 || c > 126)
@@ -132,7 +47,7 @@ void transformChar(const char c)
         std::cout << "Char: '" << c << "'" << std::endl;
     std::cout << "Int: " << (int)c << std::endl;
     std::cout << "Float: " << (float)c << ".0f" << std::endl;
-    std::cout << "Double: " << c << ".0" << std::endl;
+    std::cout << "Double: " << (double)c << ".0" << std::endl;
 }
 
 bool test_int(const std::string literal)
@@ -246,7 +161,7 @@ void caseSpecial(std::string literal)
     else if (literal == "nanf")
     {
         std::cout << "Float: " << literal << std::endl;
-        std::cout << "Double: nanf" << std::endl;
+        std::cout << "Double: nan" << std::endl;
     }
 }
 
@@ -268,7 +183,7 @@ void ScalarConverter::convert(std::string literal)
             break;
         case IS_SPECIAL:
             caseSpecial(literal);
-        break;
+            break;
         default:
             std::cout << "Bad argument" << std::endl;
             break;

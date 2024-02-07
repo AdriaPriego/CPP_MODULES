@@ -6,12 +6,12 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 14:26:30 by apriego-          #+#    #+#              #
-#    Updated: 2024/02/06 11:27:19 by codespace        ###   ########.fr        #
+#    Updated: 2024/02/07 22:37:17 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = convert
-SRC = main.cpp ScalarConverter.cpp
+SRC = main.cpp ScalarConverter.cpp utils.cpp
 FLAGS = -std=c++98 -Wall -Wextra -Werror
 DEPFLAGS = -MMD -MP
 DIR_OBJ = tmp/
