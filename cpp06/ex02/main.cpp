@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:29:48 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/07 23:47:46 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/07 23:49:22 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,21 @@ void identify( Base& p )
 {
 	try
 	{
-		A& a = dynamic_cast< A& >( p );
-		( void )a;
+		dynamic_cast< A& >( p );
 		std::cout << "Object refereced to by p is of type A" << std::endl;
 		return ;
 	}
 	catch ( std::exception& e ) {}
 	try
 	{
-		B& b = dynamic_cast< B& >( p );
-		( void )b;
+		dynamic_cast< B& >( p );
 		std::cout << "Object refereced to by p is of type B" << std::endl;
 		return ;
 	}
 	catch ( std::exception& e ) {}
 	try
 	{
-		C& c = dynamic_cast< C& >( p );
-		( void )c;
+        dynamic_cast< C& >( p );
 		std::cout << "Object refereced to by p is of type C" << std::endl;
 		return ;
 	}
