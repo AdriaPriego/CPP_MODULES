@@ -6,12 +6,12 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 10:57:30 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/07 22:34:13 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/08 14:13:31 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
-#include <sstream> // Para atof
+#include <sstream>
 #include <cstdlib>
 #include <climits>
 #include <cfloat>
@@ -76,55 +76,65 @@ bool test_int(const std::string literal)
 void transformInt(std::string literal)
 {
     int numint = std::atoi(literal.c_str());
-    double numdouble = std::atof(literal.c_str());
-    float numfloat = std::atof(literal.c_str());
+    double numdouble = static_cast<double>(numint);
+    float numfloat = static_cast<float>(numint);
+    char c = static_cast<char>(numint);
 
-    if (numint < 33 || numint > 126)
-        std::cout << "Char: Non displayable" << std::endl;
+    if(countOcurs(literal, '-') == 0 && numint == -1)
+        std::cout << "Int overflow" << std::endl;
+    else if (literal.length() - countOcurs(literal, '0') > 2 && numint == 0)
+    {
+        std::cout << "Int underflow" << std::endl;
+    }
     else
-        std::cout << "Char: '" << (char)numint << "'" << std::endl;
-    if (test_int(literal))
-        std::cout << "Int: " << numint << std::endl;
-    else
-        std::cout << "Int: Non displayable" << std::endl;
-    std::cout << "Float: " << numfloat << "f" << std::endl;
-    std::cout << "Double: " << numdouble << std::endl;
+    {
+        if (!isprint(numint))
+            std::cout << "Char: Non displayable" << std::endl;
+        else
+            std::cout << "Char: '" << c << "'" << std::endl;
+        if (test_int(literal))
+            std::cout << "Int: " << numint << std::endl;
+        else
+            std::cout << "Int: Non displayable" << std::endl;
+        std::cout << "Float: " << numfloat << "f" << std::endl;
+        std::cout << "Double: " << numdouble << std::endl;
+    }
 }
 
 void transformFloat(std::string literal)
 {
-    int numint = std::atof(literal.c_str());
-    double numdouble = std::atof(literal.c_str());
     float numfloat = std::atof(literal.c_str());
+    double numdouble = static_cast<double>(numfloat);
+    int numint = static_cast<int>(numfloat);
+    char c = static_cast<char>(numfloat);
 
-    std::cout << "FLOAT" << std::endl;
-    if (numint < 33 || numint > 126)
+    if (!isascii(numfloat))
         std::cout << "Char: Non displayable" << std::endl;
     else
-        std::cout << "Char: '" << (char)numint << "'" << std::endl;
+        std::cout << "Char: '" << c << "'" << std::endl;
     if (numint > INT_MAX || numint < INT_MIN || (numint == INT_MIN && literal.find_first_of('.', 0) > 11))
         std::cout << "Int: Non displayable" << std::endl;
     else
-        std::cout << "Int: " << (int)numint << std::endl;
+        std::cout << "Int: " << numint << std::endl;
     std::cout << "Float: " << numfloat << "f" << std::endl;
     std::cout << "Double: " << numdouble << std::endl;
 }
 
 void transformDouble(std::string literal)
 {
-    int numint = std::atof(literal.c_str());
     double numdouble = std::atof(literal.c_str());
-    float numfloat = std::atof(literal.c_str());
+    int numint = static_cast<int>(numdouble);
+    float numfloat = static_cast<float>(numdouble);
+    char c = static_cast<char>(numdouble);
 
-    std::cout << "FLOAT" << std::endl;
-    if (numint < 33 || numint > 126)
+    if (!isascii(numdouble))
         std::cout << "Char: Non displayable" << std::endl;
     else
-        std::cout << "Char: '" << (char)numint << "'" << std::endl;
+        std::cout << "Char: '" << c << "'" << std::endl;
     if (numint > INT_MAX || numint < INT_MIN || (numint == INT_MIN && literal.find_first_of('.', 0) > 11))
         std::cout << "Int: Non displayable" << std::endl;
     else
-        std::cout << "Int: " << (int)numint << std::endl;
+        std::cout << "Int: " << numint << std::endl;
     std::cout << "Float: " << numfloat << "f" << std::endl;
     std::cout << "Double: " << numdouble << std::endl;
 }
