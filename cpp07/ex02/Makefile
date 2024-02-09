@@ -6,13 +6,13 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 14:26:30 by apriego-          #+#    #+#              #
-#    Updated: 2024/02/07 23:16:22 by codespace        ###   ########.fr        #
+#    Updated: 2024/02/09 16:44:03 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = convert
-SRC = main.cpp Serializer.cpp
-FLAGS = -std=c++98 -Wall -Wextra -Werror
+SRC = main.cpp Array.cpp
+FLAGS = -std=c++98 -Wall -Wextra -Werror -I .
 DEPFLAGS = -MMD -MP
 DIR_OBJ = tmp/
 OBJ = $(addprefix $(DIR_OBJ),$(SRC:.cpp=.o))
