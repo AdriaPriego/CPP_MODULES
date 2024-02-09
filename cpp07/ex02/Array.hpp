@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: apriego- <apriego-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:59:34 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/09 16:50:15 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/09 18:13:43 by apriego-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ template <typename T>
 class Array
 {
     private:
-        T *_arr = NULL;
+        T *_arr;
         unsigned int _size;
     public:
         Array( void );
@@ -29,3 +29,5 @@ class Array
         unsigned int size( void ) const;
         ~Array( void );
 };
+
+#include "Array.tpp"

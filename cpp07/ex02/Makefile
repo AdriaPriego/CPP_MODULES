@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
+#    By: apriego- <apriego-@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 14:26:30 by apriego-          #+#    #+#              #
-#    Updated: 2024/02/09 16:44:03 by codespace        ###   ########.fr        #
+#    Updated: 2024/02/09 17:59:58 by apriego-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = convert
-SRC = main.cpp Array.cpp
+SRC = main.cpp
 FLAGS = -std=c++98 -Wall -Wextra -Werror -I .
 DEPFLAGS = -MMD -MP
 DIR_OBJ = tmp/
@@ -26,7 +26,7 @@ $(DIR_OBJ):
 $(NAME): $(OBJ)
 	c++ $(FLAGS) $(OBJ) -o $(NAME)
 
-$(DIR_OBJ)%.o: %.cpp Makefile 
+$(DIR_OBJ)%.o: %.cpp Makefile
 	c++ $(FLAGS) $(DEPFLAGS) -c $< -o $@
 
 clean:

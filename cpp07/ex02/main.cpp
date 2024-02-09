@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: apriego- <apriego-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 14:25:34 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/09 16:52:54 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/09 18:14:19 by apriego-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <Array.hpp>
-#include <Array.tpp>
 #include <ctime>
 #include <cstdlib>
 

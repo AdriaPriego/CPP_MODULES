@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: apriego- <apriego-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 16:08:24 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/09 16:50:52 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/09 18:17:05 by apriego-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#pragma once
 
 #include "Array.hpp"
 
@@ -24,25 +26,32 @@ Array<T>::Array( unsigned int n )
 {
     _arr = new T[n]();
     _size = n;
-    for (unsigned int i = 0; i < _size; i++)
-        _arr[i] = T();
 }
 
 template <typename T>
 Array<T>::Array( const Array<T> &cpy )
 {
-    *this = cpy;
+	this->_size = cpy._size;
+	this->_arr = new T[ this->_size ]();
+	if ( this->_size != 0 )
+	{
+		for ( unsigned int i = 0; i < this->_size; i++ )
+			this->_arr[ i ] = cpy._arr[ i ];
+	}
 }
 
 template <typename T>
 Array<T> &Array<T>::operator=( const Array<T> &cpy )
 {
-    if (_arr)
-        delete[] _arr;
-    _size = cpy._size;
-    _arr = new T[_size]();
-    for (unsigned int i = 0; i < _size; i++)
-        _arr[i] = cpy._arr[i];
+    this->_size = cpy._size;
+    if (this->_size != 0)
+        delete [] _arr;
+    this->_arr = new T[this->_size]();
+    if (this->_size != 0)
+    {
+        for (unsigned int i = 0; i < this->_size; i++)
+            this->_arr[i] = cpy._arr[i];
+    }
     return (*this);
 }
 
@@ -63,5 +72,6 @@ T& Array<T>::operator[](unsigned int n)
 template <typename T>
 Array<T>::~Array( void )
 {
-    delete[] _arr;
+    if (_arr)
+        delete[] _arr;
 }
