@@ -6,7 +6,7 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 14:26:30 by apriego-          #+#    #+#              #
-#    Updated: 2024/02/09 17:37:27 by codespace        ###   ########.fr        #
+#    Updated: 2024/02/12 10:08:51 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,4 +39,4 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
--include $(DEP)% 
+-include $(DEP)
