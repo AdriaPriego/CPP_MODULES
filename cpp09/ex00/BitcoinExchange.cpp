@@ -6,7 +6,8 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:05:38 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/12 17:05:40 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/14 18:13:09 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "BitcoinExchange.hpp"
