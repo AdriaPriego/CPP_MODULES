@@ -6,15 +6,18 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:05:41 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/15 14:35:02 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/16 10:50:28 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <ctime>
-#include <climits>
 #include <iostream>
+#include <fstream>
+#include <vector>
+#include <ctime>
+#include <sstream>
+#include <climits>
 #include <cstdlib>
 
 typedef struct s_exchange
@@ -23,9 +26,8 @@ typedef struct s_exchange
     double eRate;
 }           t_exchange;
 
-int dayDifference(const struct tm &date1, const struct tm &date2)
-{
-    int date1Acum = date1.tm_year * 365 + date1.tm_mon * 30 + date1.tm_mday;
-    int date2Acum = date2.tm_year * 365 + date2.tm_mon * 30 + date2.tm_mday;
-    return (date1Acum - date2Acum);
-}
+int dayDifference(const struct tm &date1, const struct tm &date2);
+std::vector<std::string> split(const std::string& s, char delimiter);
+std::vector<t_exchange> parseBD(std::vector<std::string> fileVector);
+t_exchange parseLine(std::string line);
+void doExchange(std::vector<t_exchange> dataBD, std::vector<std::string> fileVector);

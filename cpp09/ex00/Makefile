@@ -6,12 +6,12 @@
 #    By: codespace <codespace@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/21 14:26:30 by apriego-          #+#    #+#              #
-#    Updated: 2024/02/14 18:13:27 by codespace        ###   ########.fr        #
+#    Updated: 2024/02/16 10:49:31 by codespace        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = btc
-SRC = main.cpp
+SRC = main.cpp BitcoinExchange.cpp
 FLAGS = -std=c++98 -Wall -Wextra -Werror
 DEPFLAGS = -MMD -MP
 DIR_OBJ = tmp/
