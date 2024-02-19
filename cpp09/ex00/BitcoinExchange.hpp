@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:05:41 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/16 10:50:28 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/19 13:14:35 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 #include <iostream>
 #include <fstream>
-#include <vector>
+#include <list>
 #include <ctime>
 #include <sstream>
 #include <climits>
@@ -27,7 +27,7 @@ typedef struct s_exchange
 }           t_exchange;
 
 int dayDifference(const struct tm &date1, const struct tm &date2);
-std::vector<std::string> split(const std::string& s, char delimiter);
-std::vector<t_exchange> parseBD(std::vector<std::string> fileVector);
+std::list<std::string> split(const std::string& s, char delimiter);
+std::list<t_exchange> parseBD(std::list<std::string> fileList);
 t_exchange parseLine(std::string line);
-void doExchange(std::vector<t_exchange> dataBD, std::vector<std::string> fileVector);
+void doExchange(std::list<t_exchange> dataBD, std::list<std::string> fileList);

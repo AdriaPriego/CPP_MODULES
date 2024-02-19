@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:05:44 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/16 10:47:07 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/19 13:16:43 by codespace        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,26 +27,26 @@ int main(int argc, char **argv)
         std::cout << "BD not found" << std::endl;
         return (1);
     }
-    std::vector<std::string> fileVector;
+    std::list<std::string> fileList;
     std::string line;
     while (getline(file, line))
     {
-        fileVector.push_back(line);
+        fileList.push_back(line);
     }
     file.close();
-    std::vector<t_exchange> dataBD = parseBD(fileVector);
+    std::list<t_exchange> dataBD = parseBD(fileList);
     file.open(argv[1], std::ios::in);
     if (!file)
     {
         std::cout << "File not found" << std::endl;
         return (1);
     }
-    fileVector.clear();
+    fileList.clear();
     while (getline(file, line))
     {
-        fileVector.push_back(line);
+        fileList.push_back(line);
     }
     file.close();
-    doExchange(dataBD, fileVector);
+    doExchange(dataBD, fileList);
     return (0);       
 }
