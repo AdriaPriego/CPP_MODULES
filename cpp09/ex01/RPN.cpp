@@ -3,14 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   RPN.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: apriego- <apriego-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 10:58:33 by codespace         #+#    #+#             */
-/*   Updated: 2024/02/16 17:29:54 by codespace        ###   ########.fr       */
+/*   Updated: 2024/02/19 17:53:06 by apriego-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
+
+int doOperation(int num1, int num2, char operation)
+{
+    if (operation == '*')
+        return (num2 * num1);
+    if (operation == '+')
+        return (num2 + num1);
+    if (operation == '-')
+        return (num2 - num1);
+    if (operation == '/')
+    {
+        if (num1 == 0)
+            throw std::logic_error("Imposible division");
+        return (num2 / num1);
+    }
+    return (num1);
+}
 
 int reversePolishNotation(char *str)
 {
@@ -24,18 +41,15 @@ int reversePolishNotation(char *str)
             throw std::logic_error("Error Bad Arguments");
         if (token[0] == '*' || token[0] == '+' || token[0] == '-' || token[0] == '/')
         {
+            if (st.size() == 0)
+                throw std::logic_error("Error Bad Arguments");
             int num1 = st.top();
             st.pop();
+            if (st.size() == 0)
+                throw std::logic_error("Error Bad Arguments");
             int num2 = st.top();
             st.pop();
-            if (token[0] == '*')
-                st.push(num2 * num1);
-            if (token[0] == '+')
-                st.push(num2 + num1);
-            if (token[0] == '-')
-                st.push(num2 - num1);
-            if (token[0] == '/')
-                st.push(num2 / num1);
+            st.push(doOperation(num1, num2, token[0]));
         }
         else
         {
